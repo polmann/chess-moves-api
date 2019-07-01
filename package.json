@@ -1,0 +1,61 @@
+{
+  "name": "chess-moves-api",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Eduardo Polmann <eduardopolmann@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js --exec babel-node | bunyan",
+    "dev:test": "jest --watch",
+    "start": "npm run build && npm run serve",
+    "build": "babel src --ignore __tests__,__mocks__ -d dist",
+    "lint": "eslint .",
+    "serve": "node dist/server.js",
+    "precommit": "lint-staged && npm test",
+    "test": "jest --forceExit",
+    "coverage": "jest --coverage --forceExit"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "husky": "^0.14.3",
+    "jest": "^22.0.0",
+    "nodemon": "^1.13.3",
+    "prettier": "^1.9.2",
+    "lint-staged": "^6.0.0",
+    "supertest": "^3.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "bunyan": "^1.8.12",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "helmet": "^3.9.0",
+    "on-headers": "^1.0.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --trailing-comma all --print-width 100 --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "automock": false,
+    "testRegex": "/__tests__/.*\\.test\\.jsx?$",
+    "testURL": "http://localhost",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__/"
+    ]
+  }
+}
