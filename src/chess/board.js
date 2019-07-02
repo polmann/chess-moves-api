@@ -30,3 +30,28 @@ export function move(position, numSquares) {
 
   return `${boardColumns[newColumnIndex]}${newRow}`;
 }
+
+export function calculatePositions(possibleMoves, initialPosition, depth) {
+  const step = depth || 1;
+
+  const newPositions = possibleMoves.reduce((results, currMove) => {
+    const positionAfterMove = move(initialPosition, currMove);
+    if (positionAfterMove) {
+      return [...results, positionAfterMove];
+    }
+
+    return results;
+  }, []);
+
+  if (step < 2) {
+    return newPositions;
+  }
+
+  return newPositions
+    .reduce((results, currPosition) => {
+      let newResults = [...results, ...knight(currPosition, step - 1)];
+
+      return newResults.filter((item, pos, self) => self.indexOf(item) == pos);
+    }, [])
+    .sort();
+}

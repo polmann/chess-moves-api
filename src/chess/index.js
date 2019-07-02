@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { isPositionValid } from './board';
-import knightMoves from './knightMoves';
+import { isPositionValid, calculatePositions } from './board';
+import { knightMoves } from './moves';
 
 const router = new Router();
 
@@ -29,7 +29,7 @@ router.param('depth', function(req, res, next, depth) {
 router.get('/knight/:position/:depth?', function(req, res) {
   const { position, depth } = req.params;
 
-  res.status(200).send(knightMoves(position, depth));
+  res.status(200).send(calculatePositions(knightMoves, position, depth));
 });
 
 export default router;
