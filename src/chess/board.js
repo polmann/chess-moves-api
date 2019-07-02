@@ -14,3 +14,19 @@ export function isPositionValid(position) {
 
   return boardColumns.includes(column) && (row >= 1 && row <= 8);
 }
+
+export function move(position, numSquares) {
+  const { columns, rows } = numSquares;
+
+  const newColumnIndex = boardColumns.indexOf(position[0]) + (columns || 0);
+  if (newColumnIndex < 0 || newColumnIndex >= boardColumns.length) {
+    return;
+  }
+
+  const newRow = parseInt(position[1]) + (rows || 0);
+  if (newRow < 1 || newRow > 8) {
+    return;
+  }
+
+  return `${boardColumns[newColumnIndex]}${newRow}`;
+}
