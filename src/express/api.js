@@ -5,6 +5,7 @@ import session from 'express-session';
 import errorHandler from './errorHandler';
 import healthCheck from './healthCheck';
 import requestLogger from './requestLogger';
+import chessRouter from '../chess';
 
 export default function api({ cookieSecret, cookieDomain }) {
   const server = express();
@@ -24,6 +25,8 @@ export default function api({ cookieSecret, cookieDomain }) {
   );
 
   server.use('/healthz', healthCheck);
+
+  server.use('/chess', chessRouter);
 
   server.use(errorHandler());
 
