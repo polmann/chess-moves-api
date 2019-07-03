@@ -49,7 +49,7 @@ export function calculatePositions(possibleMoves, initialPosition, depth) {
 
   return newPositions
     .reduce((results, currPosition) => {
-      let newResults = [...results, ...knight(currPosition, step - 1)];
+      let newResults = [...results, ...calculatePositions(possibleMoves, currPosition, step - 1)];
 
       return newResults.filter((item, pos, self) => self.indexOf(item) == pos);
     }, [])
