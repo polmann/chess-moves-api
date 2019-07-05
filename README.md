@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/polmann/chess-moves-app/blob/master/public/project_icon.png" />
+  <img src="https://github.com/polmann/chess-moves-api/blob/master/public/project_icon.png" />
 </p>
 
 # Valid Chess Moves API
