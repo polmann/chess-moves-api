@@ -74,5 +74,35 @@ describe('chess.board.move', () => {
 });
 
 describe('chess.board.calculatePositions', () => {
-  it('', () => {});
+  const pieceMoves = [{ columns: 1, rows: -1 }, { columns: -2, rows: 2 }];
+
+  const initPos = 'D4';
+
+  const returned = {
+    depth1: ['E3', 'B6'],
+    depth2: ['C5', 'F2'],
+    depth3: ['A7', 'D4', 'G1'],
+  };
+
+  it('Returns an array', () => {
+    expect(calculatePositions(pieceMoves, initPos)).toBeInstanceOf(Array);
+  });
+
+  it('Returns all possible moves on 1 turn', () => {
+    expect(calculatePositions(pieceMoves, initPos)).toEqual(returned.depth1);
+  });
+
+  it('Returns only positions that are within the bounds of the board', () => {
+    const pieceMovesWithOutOfBounds = [{ columns: 1, rows: -1 }, { columns: -10, rows: 10 }];
+
+    expect(calculatePositions(pieceMovesWithOutOfBounds, initPos)).toEqual(['E3']);
+  });
+
+  it('Returns all possible moves on 2 turns', () => {
+    expect(calculatePositions(pieceMoves, initPos, '2')).toEqual(returned.depth2);
+  });
+
+  it('Returns all possible moves on 3 turns', () => {
+    expect(calculatePositions(pieceMoves, initPos, '3')).toEqual(returned.depth3);
+  });
 });
