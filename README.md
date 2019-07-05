@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/polmann/chess-moves-app/blob/master/public/project_icon.png" />
+</p>
+
 # Valid Chess Moves API
 
 This is an api that returns the valid moves of a chess piece given its position and the depth of play (number of steps). Currently there's only support for the knight piece, anyone is welcome to [contribute](/CONTRIBUTING.md).
