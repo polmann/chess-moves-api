@@ -6,7 +6,7 @@ import cors from './cors';
 import errorHandler from './errorHandler';
 import healthCheck from './healthCheck';
 import requestLogger from './requestLogger';
-import chessRouter from '../chess';
+import chessRouter from '../chess/router';
 
 export default function api({ cookieSecret, cookieDomain }) {
   const server = express();

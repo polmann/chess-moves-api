@@ -7,11 +7,11 @@
   "scripts": {
     "dev": "nodemon src/server.js --exec babel-node | bunyan",
     "dev:test": "jest --watch",
-    "start": "npm run build && npm run serve",
+    "start": "yarn build && yarn serve",
     "build": "babel src --ignore __tests__,__mocks__ -d dist",
     "lint": "eslint .",
     "serve": "node dist/server.js",
-    "precommit": "lint-staged && npm test",
+    "precommit": "lint-staged && yarn test",
     "test": "jest --forceExit",
     "coverage": "jest --coverage --forceExit"
   },

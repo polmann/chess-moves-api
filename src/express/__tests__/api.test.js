@@ -6,17 +6,16 @@ import api from '../api';
 import errorHandler, { mockHandler } from '../errorHandler';
 import healthCheck from '../healthCheck';
 import requestLogger, { mockLogger } from '../requestLogger';
+import chessRouter from '../../chess/router';
 
 jest.mock('../requestLogger');
 jest.mock('../errorHandler');
+jest.mock('../../chess/router');
 
 describe('express.API', () => {
   const mockOptions = {
-    port: 3000,
     cookieSecret: 'not so secret',
     cookieDomain: 'localhost',
-    logentriesToken: 'someToken',
-    engineApiKey: 'someApiKey',
   };
 
   afterEach(() => {
@@ -72,5 +71,10 @@ describe('express.API', () => {
   it('Has created a /healthz endpoint', () => {
     api(mockOptions);
     expect(mockExpressUse).toHaveBeenCalledWith('/healthz', healthCheck);
+  });
+
+  it('Has created a /chess endpoint', () => {
+    api(mockOptions);
+    expect(mockExpressUse).toHaveBeenCalledWith('/chess', chessRouter);
   });
 });

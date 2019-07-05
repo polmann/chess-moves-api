@@ -1,4 +1,4 @@
-const boardColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+export const boardColumns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
 export function isPositionValid(position) {
   if (typeof position !== 'string' || position.length !== 2) {
